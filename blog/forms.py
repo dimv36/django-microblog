@@ -23,3 +23,9 @@ class RegistrationForm(UserCreationForm):
         if email and Author.objects.filter(email=email).exclude(username=username).exists():
             raise forms.ValidationError('Email addresses must be unique.')
         return email
+
+
+class EditProfileForm(forms.ModelForm):
+    class Meta:
+        model = Author
+        fields = ('username', 'about_me')
