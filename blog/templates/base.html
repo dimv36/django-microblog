@@ -10,7 +10,11 @@
         <div>
             Microblog:
             <a href="{% url 'index' %}">Home</a>
-            <a href="{% url 'login' %}">Login</a>
+            {% if user.is_anonymous %}
+              <a href="{% url 'login' %}">Login</a>
+            {% else %}
+              <a href="{% url 'logout' %}">Logout</a>
+            {% endif %}
         </div>
         {% if messages %}
         <ul class="messages">
