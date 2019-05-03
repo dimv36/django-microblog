@@ -4,7 +4,7 @@ from django.contrib.auth.models import AbstractUser
 
 
 class Author(AbstractUser):
-    about_me = models.TextField('About me', max_length=140, null=True)
+    pass
 
 
 class Post(models.Model):
