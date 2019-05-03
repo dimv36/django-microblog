@@ -9,7 +9,8 @@ class LoginForm(forms.Form):
 
 
 class RegistrationForm(UserCreationForm):
-    about_me = forms.CharField(label='Description', required=False, help_text='Optional')
+    about_me = forms.CharField(label='Description', required=False, widget=forms.Textarea(),
+                               help_text='Optional')
     email = forms.EmailField(label='Email address')
 
     class Meta:
