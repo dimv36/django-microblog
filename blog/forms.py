@@ -6,11 +6,10 @@ from .models import Author
 class LoginForm(forms.Form):
     username = forms.CharField(label='Username')
     password = forms.CharField(label='Password', widget=forms.PasswordInput())
-    remember_me = forms.BooleanField(label='Remember Me', required=False)
 
 
 class RegistrationForm(UserCreationForm):
-    description = forms.CharField(label='Description', required=False, help_text='Optional')
+    about_me = forms.CharField(label='Description', required=False, help_text='Optional')
     email = forms.EmailField(label='Email address')
 
     class Meta:
