@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load gravatar %}
+
+{% block content %}
+    <table>
+        <tr valign="top">
+            <td><img src="{% gravatar_url user.email 150 %}"></td>
+            <td>
+                <h1>User: {{ user.username }}</h1>
+                {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
+                {% if user.last_login %}<p>Last login on: {{ user.last_login }}</p>{% endif %}
+                {% if user == request.user %}
+                <p><a href="{% url 'edit_profile' %}">Edit your profile</a></p>
+                {% endif %}
+            </td>
+        </tr>
+    </table>
+    <hr>
+    {% for post in posts %}
+        {% include 'snippets/post.html' %}
+    {% endfor %}
+{% endblock %}
