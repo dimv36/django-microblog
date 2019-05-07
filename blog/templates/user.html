@@ -9,8 +9,13 @@
                 <h1>User: {{ user.username }}</h1>
                 {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
                 {% if user.last_login %}<p>Last login on: {{ user.last_login }}</p>{% endif %}
+                <p>{{ user.followers.all.count }} followers, {{ user.following.all.count }} following.</p>
                 {% if user == request.user %}
                 <p><a href="{% url 'edit_profile' %}">Edit your profile</a></p>
+                {% elif not current_is_following %}
+                <p><a href="{% url 'follow' username=user.username %}">Follow</a></p>
+                {% else %}
+                <p><a href="{% url 'unfollow' username=user.username %}">Unfollow</a></p>
                 {% endif %}
             </td>
         </tr>

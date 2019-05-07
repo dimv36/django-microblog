@@ -2,7 +2,7 @@ from django.http import HttpResponseRedirect
 from django.views import View
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login as django_login, authenticate, logout as django_logout
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from .models import *
 from .forms import LoginForm, RegistrationForm, EditProfileForm
@@ -67,7 +67,8 @@ def user(request, username):
         {'author': user, 'body': 'Test post #2'}
     ]
     return render(request, 'user.html', context={'user': user,
-                                                 'posts': posts})
+                                                 'posts': posts,
+                                                 'current_is_following': request.user.is_following(user)})
 
 
 class EditProfileView(View):
@@ -84,3 +85,31 @@ class EditProfileView(View):
         else:
             messages.error(request, 'Form invalid!')
         return HttpResponseRedirect('edit_profile')
+
+
+@login_required
+def follow(request, username):
+    user = Author.objects.filter(username=username).first()
+    if user is None:
+        messages.error(request, 'User {} not found.'.format(username))
+        return redirect('index')
+    if user == request.user:
+        messages.error('You cannot follow yourself!')
+        return redirect('user', username=username)
+    request.user.follow(user)
+    messages.success(request, 'You are following {}!'.format(username))
+    return redirect('user', username=username)
+
+
+@login_required
+def unfollow(request, username):
+    user = Author.objects.filter(username=username).first()
+    if user is None:
+        messages.error(request, 'User {} not found.'.format(username))
+        return redirect('index')
+    if user == request.user:
+        messages.error('You cannot follow yourself!')
+        return redirect('user', username=username)
+    request.user.unfollow(user)
+    messages.success(request, 'You are not following {}.'.format(username))
+    return redirect('user', username=username)

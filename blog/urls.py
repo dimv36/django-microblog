@@ -11,4 +11,6 @@ urlpatterns = [
     path('logout', views.logout, name='logout'),
     path('user/<str:username>', views.user, name='user'),
     path('edit_profile', EditProfileView.as_view(), name='edit_profile'),
+    path('follow/<str:username>', views.follow, name='follow'),
+    path('unfollow/<str:username>', views.unfollow, name='unfollow'),
 ]
