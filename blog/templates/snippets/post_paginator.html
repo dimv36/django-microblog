@@ -1,12 +1,30 @@
-<br><br>
-<div class="pagination">
-    <span class="step-links">
+<nav aria-label="...">
+    <ul class="pager">
         {% if posts.has_previous %}
-            <a href="?page={{ posts.previous_page_number }}">Newer posts</a>
+        <li class="previous">
+            <a href="?page={{ posts.previous_page_number }}">
+                <span aria-hidden="true">&rarr;</span> Newer posts
+            </a>
+        </li>
+        {% else %}
+        <li class="previous disabled">
+            <a href="#">
+                <span aria-hidden="true">&rarr;</span> Newer posts
+            </a>
+        </li>
         {% endif %}
-
         {% if posts.has_next %}
-            <a href="?page={{ posts.next_page_number }}">Old posts</a>
+        <li class="next">
+            <a href="?page={{ posts.next_page_number }}">
+                <span aria-hidden="true">&larr;</span> Older posts
+            </a>
+        </li>
+        {% else %}
+        <li class="next disabled">
+            <a href="#">
+                <span aria-hidden="true">&larr;</span> Older posts
+            </a>
+        </li>
         {% endif %}
-     </span>
-</div>
+    </ul>
+</nav>

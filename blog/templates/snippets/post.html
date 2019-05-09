@@ -1,7 +1,16 @@
 {% load gravatar %}
-<table>
-    <tr valign="top">
-        <td><img src="{% gravatar_url post.user.email 36 %}"></td>
-         <td><a href="{% url 'user' post.user.username %}">{{ post.user.username }}</a> says at {{ post.timestamp }}:<br>{{ post.body }}</td>
+<table class="table table-hover">
+    <tr>
+        <td width="70px">
+            <a href="{% url 'user' username=post.user.username %}">
+                <img src="{% gravatar_url post.user.email 70 %}">
+            </a>
+        </td>
+        <td>
+            <a href="{% url 'user' username=post.user.username %}">{{ post.user.username }}</a>
+            says at {{ post.timestamp }}:
+            <br>
+            {{ post.body }}
+        </td>
     </tr>
 </table>
