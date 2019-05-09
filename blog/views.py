@@ -117,6 +117,7 @@ def unfollow(request, username):
     return redirect('user', username=username)
 
 
+@login_required
 def posts(request):
     page = request.GET.get('page', 1)
     post_list = Post.objects.order_by('-timestamp')
