@@ -100,6 +100,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+POSTS_PER_PAGE = 10
 
 AUTH_USER_MODEL = 'blog.Author'
 LOGIN_URL = 'login'

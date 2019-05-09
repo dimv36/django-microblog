@@ -29,3 +29,7 @@ class EditProfileForm(forms.ModelForm):
     class Meta:
         model = Author
         fields = ('username', 'about_me')
+
+
+class PostSendForm(forms.Form):
+    body = forms.CharField(label='Message', widget=forms.Textarea())

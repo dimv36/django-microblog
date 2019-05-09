@@ -4,25 +4,27 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login as django_login, authenticate, logout as django_logout
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
+from django.core.paginator import Paginator
 from .models import *
-from .forms import LoginForm, RegistrationForm, EditProfileForm
+from .forms import LoginForm, RegistrationForm, EditProfileForm, PostSendForm
 
 # Create your views here.
 
 
 @login_required
 def index(request):
-    posts = [
-        {
-            'author': {'username': 'John'},
-            'body': 'Beautiful day in Portland!'
-        },
-        {
-            'author': {'username': 'Susan'},
-            'body': 'The Avengers movie was so cool!'
-        }
-    ]
-    context = {'posts': posts}
+    form = PostSendForm(request.POST if request.method == 'POST' else None)
+    if request.method == 'POST':
+        if form.is_valid():
+            post = Post(body=form.data.get('body'), user=request.user)
+            post.save()
+            messages.info(request, 'Your post added!')
+            return redirect('index')
+    page = request.GET.get('page', 1)
+    post_list = Post.objects.all().order_by('-timestamp')
+    paginator = Paginator(post_list, settings.POSTS_PER_PAGE)
+    posts = paginator.get_page(page)
+    context = {'posts': posts, 'title': 'Home', 'form': form}
     return render(request, 'index.html', context)
 
 
@@ -62,10 +64,10 @@ def logout(request):
 @login_required
 def user(request, username):
     user = get_object_or_404(Author, username=username)
-    posts = [
-        {'author': user, 'body': 'Test post #1'},
-        {'author': user, 'body': 'Test post #2'}
-    ]
+    page = request.GET.get('page', 1)
+    post_list = user.post_set.order_by('-timestamp')
+    paginator = Paginator(post_list, settings.POSTS_PER_PAGE)
+    posts = paginator.get_page(page)
     return render(request, 'user.html', context={'user': user,
                                                  'posts': posts,
                                                  'current_is_following': request.user.is_following(user)})
@@ -113,3 +115,12 @@ def unfollow(request, username):
     request.user.unfollow(user)
     messages.success(request, 'You are not following {}.'.format(username))
     return redirect('user', username=username)
+
+
+def posts(request):
+    page = request.GET.get('page', 1)
+    post_list = Post.objects.order_by('-timestamp')
+    paginator = Paginator(post_list, settings.POSTS_PER_PAGE)
+    posts = paginator.get_page(page)
+    context = {'posts': posts, 'title': 'All posts'}
+    return render(request, 'index.html', context)
