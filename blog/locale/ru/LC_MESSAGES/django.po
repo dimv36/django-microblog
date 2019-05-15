@@ -1,0 +1,216 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-05-15 10:33+0300\n"
+"PO-Revision-Date: 2019-05-15 10:34+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+"X-Generator: Poedit 2.2.1\n"
+
+#: forms.py:8
+msgid "Username"
+msgstr "Имя пользователя"
+
+#: forms.py:9
+msgid "Password"
+msgstr "Пароль"
+
+#: forms.py:13
+msgid "Description"
+msgstr "Описание"
+
+#: forms.py:14
+msgid "Optional"
+msgstr "Необязательно"
+
+#: forms.py:15
+msgid "Email address"
+msgstr "Адрес электронной почты"
+
+#: forms.py:25
+msgid "Email addresses must be unique."
+msgstr "Пользователь с таким Email уже существует."
+
+#: forms.py:36
+msgid "Message"
+msgstr "Сообщение"
+
+#: templates/404.html:4
+msgid "File Not Found"
+msgstr "Страница не найдена"
+
+#: templates/404.html:5
+msgid "Back"
+msgstr "Назад"
+
+#: templates/base.html:11
+msgid "Welcome to Microblog"
+msgstr "Добро пожаловать в Микроблог"
+
+#: templates/base.html:23
+msgid "Microblog"
+msgstr "Микроблог"
+
+#: templates/base.html:27 views.py:28
+msgid "Home"
+msgstr "Начало"
+
+#: templates/base.html:28 views.py:128
+msgid "All posts"
+msgstr "Все сообщения"
+
+#: templates/base.html:32 templates/login.html:12
+msgid "Login"
+msgstr "Вход"
+
+#: templates/base.html:34
+msgid "Profile"
+msgstr "Профиль"
+
+#: templates/base.html:35
+msgid "Logout"
+msgstr "Выход"
+
+#: templates/edit_profile.html:6
+msgid "Edit Profile"
+msgstr "Редактирование профиля"
+
+#: templates/edit_profile.html:13
+msgid "Save"
+msgstr "Сохранить"
+
+#: templates/index.html:6
+#, python-format
+msgid "Hi, %(username)s!"
+msgstr "Добрый день, %(username)s!"
+
+#: templates/index.html:14
+msgid "Send"
+msgstr "Отправить"
+
+#: templates/login.html:5 views.py:45
+msgid "Sign In"
+msgstr "Вход"
+
+#: templates/login.html:17
+msgid "New User?"
+msgstr "Новый пользователь?"
+
+#: templates/login.html:17
+msgid "Click to Register!"
+msgstr "Нажми для регистрации!"
+
+#: templates/registration.html:5
+msgid "Sign Up"
+msgstr "Регистрация"
+
+#: templates/registration.html:12
+msgid "Register"
+msgstr "Зарегистрироваться"
+
+#: templates/snippets/post.html:12
+#, python-format
+msgid "says at %(ts)s:"
+msgstr "сказал %(ts)s:"
+
+#: templates/snippets/post_paginator.html:6
+#: templates/snippets/post_paginator.html:12
+msgid "Newer posts"
+msgstr "Новые сообщения"
+
+#: templates/snippets/post_paginator.html:19
+#: templates/snippets/post_paginator.html:25
+msgid "Older posts"
+msgstr "Старые сообщения"
+
+#: templates/user.html:10
+#, python-format
+msgid "User: %(user)s"
+msgstr "Пользователь: %(user)s"
+
+#: templates/user.html:12
+#, python-format
+msgid "Last login on: %(login)s"
+msgstr "Последний вход: %(login)s"
+
+#: templates/user.html:13
+#, python-format
+msgid "%(followers)s followers, %(following)s following."
+msgstr "%(followers)s подписчиков, на %(following)s подписан."
+
+#: templates/user.html:15
+msgid "Edit your profile"
+msgstr "Редактирование профиля"
+
+#: templates/user.html:17
+msgid "Follow"
+msgstr "Подписаться"
+
+#: templates/user.html:19
+msgid "Unfollow"
+msgstr "Отписаться"
+
+#: views.py:22
+msgid "Your post added!"
+msgstr "Ваше сообщение добавлено!"
+
+#: views.py:41
+msgid "Logged as {}"
+msgstr "Осуществлен вход пользователем {}"
+
+#: views.py:44
+msgid "Login failed for user {}"
+msgstr "Ошибка входа пользователем {}"
+
+#: views.py:55
+msgid "User {} successfully created!"
+msgstr "Пользователь {} успешно создан!"
+
+#: views.py:57
+msgid "Sign up"
+msgstr "Регистрация"
+
+#: views.py:74
+msgid "User {}"
+msgstr "Пользователь {}"
+
+#: views.py:81
+msgid "Edit profile"
+msgstr "Редактирование профиля"
+
+#: views.py:88
+msgid "Your changes have been saved."
+msgstr "Ваши изменения сохранены."
+
+#: views.py:98 views.py:112
+msgid "User {} not found."
+msgstr "Пользователь {} не найден."
+
+#: views.py:101
+msgid "You cannot follow yourself!"
+msgstr "Вы не можете подписаться на самого себя!"
+
+#: views.py:104
+msgid "You are following {}!"
+msgstr "Вы подписались на {}!"
+
+#: views.py:115
+msgid "You cannot unfollow yourself!"
+msgstr "Вы не можете отписаться от самого себя!"
+
+#: views.py:118
+msgid "You are not following {}."
+msgstr "Вы не подписаны на {}."

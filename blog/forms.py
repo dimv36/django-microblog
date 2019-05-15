@@ -1,17 +1,18 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
+from django.utils.translation import gettext_lazy as _
 from .models import Author
 
 
 class LoginForm(forms.Form):
-    username = forms.CharField(label='Username')
-    password = forms.CharField(label='Password', widget=forms.PasswordInput())
+    username = forms.CharField(label=_('Username'))
+    password = forms.CharField(label=_('Password'), widget=forms.PasswordInput())
 
 
 class RegistrationForm(UserCreationForm):
-    about_me = forms.CharField(label='Description', required=False, widget=forms.Textarea(),
-                               help_text='Optional')
-    email = forms.EmailField(label='Email address')
+    about_me = forms.CharField(label=_('Description'), required=False, widget=forms.Textarea(),
+                               help_text=_('Optional'))
+    email = forms.EmailField(label=_('Email address'))
 
     class Meta:
         model = Author
@@ -21,7 +22,7 @@ class RegistrationForm(UserCreationForm):
         email = self.cleaned_data.get('email')
         username = self.cleaned_data.get('username')
         if email and Author.objects.filter(email=email).exclude(username=username).exists():
-            raise forms.ValidationError('Email addresses must be unique.')
+            raise forms.ValidationError(_('Email addresses must be unique.'))
         return email
 
 
@@ -32,4 +33,4 @@ class EditProfileForm(forms.ModelForm):
 
 
 class PostSendForm(forms.Form):
-    body = forms.CharField(label='Message', widget=forms.Textarea())
+    body = forms.CharField(label=_('Message'), widget=forms.Textarea())

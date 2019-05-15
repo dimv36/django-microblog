@@ -2,17 +2,17 @@
 {% load bootstrap3 %}
 
 {% block content %}
-    <h1>Sign In</h1>
+    <h1>{{ _('Sign In') }}</h1>
     <div class="row">
         <div class="col-md-4">
             <form action="" method="post" novalidate class="form">
                 {% csrf_token %}
                 {% bootstrap_form form %}
                 {% buttons %}
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">{{ _('Login') }}</button>
                 {% endbuttons %}
             </form>
         </div>
     </div>
-    <p>New User? <a href="{% url 'signup' %}">Click to Register!</a></p>
+    <p>{{ _('New User?') }} <a href="{% url 'signup' %}">{{ _('Click to Register!') }}</a></p>
 {% endblock %}

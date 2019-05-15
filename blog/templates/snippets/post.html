@@ -1,4 +1,5 @@
 {% load gravatar %}
+{% load i18n %}
 <table class="table table-hover">
     <tr>
         <td width="70px">
@@ -8,7 +9,7 @@
         </td>
         <td>
             <a href="{% url 'user' username=post.user.username %}">{{ post.user.username }}</a>
-            says at {{ post.timestamp }}:
+            {% blocktrans with ts=post.timestamp %}says at {{ ts }}:{% endblocktrans %}
             <br>
             {{ post.body }}
         </td>
