@@ -41,7 +41,6 @@
                 <div class="alert {% if message.tags == 'error' %} alert-danger {% else %} alert-info {% endif %}" role="alert">{{ message }}</div>
             {% endfor %}
         {% endif %}
-        <hr>
         <div class="container" style="margin-left: 0px;">
         {% block content %}{% endblock %}
         </div>

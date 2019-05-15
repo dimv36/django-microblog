@@ -3,13 +3,13 @@
         {% if posts.has_previous %}
         <li class="previous">
             <a href="?page={{ posts.previous_page_number }}">
-                <span aria-hidden="true">&rarr;</span> Newer posts
+                Newer posts <span aria-hidden="true">&rarr;</span>
             </a>
         </li>
         {% else %}
         <li class="previous disabled">
             <a href="#">
-                <span aria-hidden="true">&rarr;</span> Newer posts
+                Newer posts <span aria-hidden="true">&rarr;</span>
             </a>
         </li>
         {% endif %}
