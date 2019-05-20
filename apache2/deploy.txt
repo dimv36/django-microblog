@@ -1,0 +1,17 @@
+Развертывание на Apache2
+
+0.  Для развертывания сайта потребуются пакеты apache2, libapache2-mod-wsgi-py3
+1.  Скопировать проект в /var/www
+2.  Развернуть виртуальное окружение в /var/www/django-microblog/venv
+3.  Установить зависимости из requirements.txt
+4.  Применить миграции:
+    venv/bin/python3 manage.ru migrate
+5.  Скомпилировать локализацию:
+    venv/bin/python3 manage.ru compilemessages
+6.  Скопировать конфигурацию в /etc/apache2/sites-available
+7.  Отключить сайт по умолчанию и включить django-microblog:
+    a2dissite 000-default
+    a2ensite django-microblog
+8.  Создать пользователя и группу microblog (fly-admin-smc)
+9.  Сменить права доступа на каталог на microblog:microblog
+10. Выполнить перезапуск apache2
