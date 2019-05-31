@@ -1,6 +1,8 @@
 from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import AbstractUser
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 
 
 class Author(AbstractUser):
@@ -28,6 +30,12 @@ class Post(models.Model):
 
     def __repr__(self):
         return '<Post: {} author: {}>'.format(self.body, self.user.username)
+
+
+@receiver(post_save, sender=Post)
+def ensure_profile_exists(sender, **kwargs):
+    if kwargs.get('created', False):
+        print('new post %s created!' % kwargs.get('instance'))
 
 
 class Follower(models.Model):
